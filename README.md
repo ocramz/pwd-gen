@@ -4,7 +4,7 @@ password generator :
 
 ## Usage
 
-````
+```
 pwd-gen --help
 Usage: pwd-gen [-n|--length ARG] [-p|--bernoulli-param ARG] [-m|--length ARG]
   generate a few passwords
@@ -15,6 +15,7 @@ Available options:
   -m,--length ARG          number of passwords to generate (default: 10)
   -h,--help                Show this help text
 ```
+
 
 ## Example
 
