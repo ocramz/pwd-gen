@@ -3,11 +3,11 @@ module Main where
 import Control.Monad (replicateM, void)
 import Lib (pwdGen)
 
-import Options.Applicative (Parser, execParser, info, (<**>), helper, fullDesc, progDesc, header, option, auto, long, short, showDefault, value)
+import Options.Applicative (Parser, execParser, info, (<**>), helper, fullDesc, progDesc, header, option, auto, long, short, showDefault, value, help)
 
 main :: IO ()
 main = do
-  let opts = info (params <**> helper) (fullDesc <> progDesc "generate a few password")
+  let opts = info (params <**> helper) (fullDesc <> progDesc "generate a few passwords")
   (Params n k m) <- execParser opts
   ws <- replicateM m (pwdGen k n)
   void $ traverse putStrLn ws
@@ -31,7 +31,8 @@ bernParamP = option auto (
   long "bernoulli-param" <>
   short 'p' <>
   value 0.5 <>
-  showDefault
+  showDefault <>
+  help "Bernoulli parameter"
                          )
 
 samplesP :: Parser Int
@@ -40,7 +41,8 @@ samplesP =
     long "length" <>
     short 'm' <>
     value 10 <>
-    showDefault
+    showDefault <>
+    help "number of passwords to generate"
               )
 
 lengthP :: Parser Int
@@ -49,5 +51,6 @@ lengthP =
     long "length" <>
     short 'n' <>
     value 5 <>
-    showDefault
+    showDefault <>
+    help "number of password elements"
               )

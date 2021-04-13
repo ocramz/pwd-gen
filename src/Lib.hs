@@ -63,7 +63,7 @@ numbersSG :: PrimMonad m => Gen (PrimState m) -> Prob m String
 numbersSG gen = show <$> numbersG gen
 
 numbersG :: (PrimMonad m) => Gen (PrimState m) -> Prob m Int
-numbersG = uniformRM (1 :: Int , 9999)
+numbersG = uniformRM (1 :: Int , 99)
 
 
 wordsG :: IO (Prob (ST s) String)
